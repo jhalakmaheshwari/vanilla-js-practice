@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<title>Parcel Sandbox</title>
-	<meta charset="UTF-8" />
-</head>
-
-<body>
-	<div id="app"></div>
-
-	<script src="src/index.js">
-	</script>
-</body>
-
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <input type="text" onkeyup="betterFn()" />
+    <script src="src/index.js"></script>
+    <script src="src/currying.js"></script>
+    <script>
+      const getData = () => {
+        console.log("Hey ");
+      };
+      const debouncing = (fn, delay) => {
+        let timer;
+        return function () {
+          const context = this,
+            arg = arguments;
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            getData.apply(context, document);
+          }, delay);
+        };
+      };
+      const betterFn = debouncing(getData, 300);
+    </script>
+  </body>
 </html>

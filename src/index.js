@@ -31,6 +31,14 @@ Function.prototype.myBind = function (...args) {
 let printMyName2 = printName.myBind(name, "Jaipur");
 printMyName2("Rajasthan");
 
+// CURRYING
+
+let multiply = (x, y) => x * y;
+
+let mutiplyByTwo = multiply.bind(this, 2, 3);
+
+console.log(mutiplyByTwo(5));
+
 document.getElementById("app").innerHTML = `
 <h1>Hello Vanilla!</h1>
 <div>
